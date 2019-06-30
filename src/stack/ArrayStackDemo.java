@@ -59,7 +59,9 @@ class ArrayStack{
 	public boolean isEmpty(){
 		return top==-1;
 	}
-	
+	public int peek(){
+		return stack[top];
+	}
 	public void push(int value){
 		if(isFull()){
 			System.out.println("栈已满，无法插入");
@@ -86,5 +88,42 @@ class ArrayStack{
 			System.out.println(stack[i]);
 		}
 		
+	}
+	
+	
+	/*************************************/
+	//计算器方法
+	public int priority(int oper){
+		if(oper=='*'||oper=='/'){
+			return 1;
+		}else if(oper=='*'||oper=='/'){
+			return 0;
+		}else{
+			return -1;
+		}
+	}
+	
+	public boolean isOper(char val){
+		return val=='+'||val=='-'||val=='*'||val=='/';
+	}
+	public int cal(int num1,int num2,char oper ){
+		int res=0;
+		switch(oper){
+		case '+':
+			res=num1+num2;
+			break;
+		case '-':
+			res=num2-num1;
+			break;
+		case '*':
+			res=num2*num1;
+			break;
+		case '/':
+			res=num2/num1;
+			break;
+		default:
+			break;
+		}
+		return res;
 	}
 }
