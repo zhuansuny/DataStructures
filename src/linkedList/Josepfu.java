@@ -1,3 +1,4 @@
+package linkedList;
 //Ô¼Éª·òÎÊÌâ
 public class Josepfu {
 	public static void main(String[] args) {

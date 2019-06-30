@@ -1,4 +1,4 @@
-
+package linkedList;
 public class DoubleLinkedListDemo {
 	public static void main(String[] args) {
 		System.out.println("Ë«ÏòÁ´±í²âÊÔ");
