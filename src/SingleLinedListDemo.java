@@ -3,24 +3,58 @@ import java.util.Stack;
 public class SingleLinedListDemo {
 	
 	public static void main(String[] args) {
+		//System.out.println("单向链表测试");
 		HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
 		HeroNode hero2 = new HeroNode(2, "卢俊义", "玉麒麟");
 		HeroNode hero3 = new HeroNode(3, "吴用", "智多星");
 		HeroNode hero4 = new HeroNode(4, "林冲", "豹子头");
-		//HeroNode hero5 = new HeroNode(1, "卢俊义2", "玉麒麟3");
+		HeroNode hero5 = new HeroNode(5, "卢俊义2", "玉麒麟3");
 		SingleLinkedList singleLinkedList = new SingleLinkedList();
+		SingleLinkedList singleLinkedList2 = new SingleLinkedList();
 		//按顺序插入节点 
 		singleLinkedList.addByOrder(hero1);
-		singleLinkedList.addByOrder(hero4);
-		singleLinkedList.addByOrder(hero3);
 		singleLinkedList.addByOrder(hero2);
+		singleLinkedList.addByOrder(hero3);
+		singleLinkedList.addByOrder(hero5);
+		
+		//singleLinkedList2.addByOrder(hero2);
+		//singleLinkedList2.addByOrder(hero1);
+		singleLinkedList2.addByOrder(hero4);
+		singleLinkedList2.addByOrder(hero5);
+		HeroNode head=mergeLingkedList(singleLinkedList.getHead().next,singleLinkedList2.getHead().next);
 		//打印节点
-		singleLinkedList.list();
+		//singleLinkedList.list();
 		//反转链表
-		reverseList(singleLinkedList.getHead());
-		singleLinkedList.list();
+		//reverseList(singleLinkedList.getHead());
+		//singleLinkedList.list();
 		//链表反序打印
-		reversePrint(singleLinkedList.getHead());
+		//reversePrint(singleLinkedList.getHead());
+
+		while(head!=null){
+			System.out.println(head);
+			head=head.next;
+		}
+	}
+	//将两个有序链表合并成一个有序链表
+	public static HeroNode mergeLingkedList(HeroNode head1,HeroNode head2){
+		HeroNode head=null;
+		if (head1==null && head2==null) {
+            return null;
+		}
+        if (head1==null) {
+            return head2;
+        }
+        if (head2==null) {
+            return head1;
+        }
+		if(head1.no<=head2.no){
+			head=head1;
+			head.next=mergeLingkedList(head1.next,head2);
+		}else{
+			head=head2;
+			head.next=mergeLingkedList(head1,head2.next);
+		}		
+		return head;
 	}
 	//链表反序打印方法
 	public static void reversePrint(HeroNode head){
